@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LJM Utils", "LJM Utils.csproj", "{15227404-C5E8-4E84-AD7F-4518294CEEBA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{15227404-C5E8-4E84-AD7F-4518294CEEBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15227404-C5E8-4E84-AD7F-4518294CEEBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15227404-C5E8-4E84-AD7F-4518294CEEBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15227404-C5E8-4E84-AD7F-4518294CEEBA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1C153011-F4C5-49F2-ADBD-4F50059466F8}
+	EndGlobalSection
+EndGlobal
