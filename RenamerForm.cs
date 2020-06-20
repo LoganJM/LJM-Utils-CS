@@ -3,17 +3,25 @@ using System.Windows.Forms;
 using System.IO;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace LJM_Utils
 {
     public partial class RenamerForm : Form
     {
+        Point OptionGroupLocation = new Point(11, 209);
         int PreviousStrategySelection = -1;
-        int ActiveStrategy;
 
         public RenamerForm()
         {
             InitializeComponent();
+
+            // Resize form and move option groups to overlay one another.
+            // Reasoning: keeping everything separated allows for easy design of the controls
+            //            when they are intended to all be on top of one another during runtime.
+            RenamerForm.ActiveForm.Width = 360;
+            groupRandomOptions.Location = OptionGroupLocation;
+            groupRegExOptions.Location = OptionGroupLocation;
         }
 
         private bool ValidateRenameProcess(ref bool NoErrorsFound)

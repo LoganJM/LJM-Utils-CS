@@ -114,7 +114,7 @@
             // 
             // btnRename
             // 
-            this.btnRename.Location = new System.Drawing.Point(169, 356);
+            this.btnRename.Location = new System.Drawing.Point(177, 358);
             this.btnRename.Name = "btnRename";
             this.btnRename.Size = new System.Drawing.Size(75, 23);
             this.btnRename.TabIndex = 7;
@@ -144,7 +144,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(250, 356);
+            this.btnExit.Location = new System.Drawing.Point(258, 358);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
             this.btnExit.TabIndex = 10;
@@ -163,7 +163,7 @@
             this.groupBaseControls.Controls.Add(this.txtInputDirectory);
             this.groupBaseControls.Controls.Add(this.txtExtInclusions);
             this.groupBaseControls.Controls.Add(this.comboRenamingStrat);
-            this.groupBaseControls.Location = new System.Drawing.Point(10, 6);
+            this.groupBaseControls.Location = new System.Drawing.Point(11, 6);
             this.groupBaseControls.Name = "groupBaseControls";
             this.groupBaseControls.Size = new System.Drawing.Size(321, 197);
             this.groupBaseControls.TabIndex = 11;
@@ -171,7 +171,7 @@
             // 
             // groupLinearOptions
             // 
-            this.groupLinearOptions.Location = new System.Drawing.Point(10, 209);
+            this.groupLinearOptions.Location = new System.Drawing.Point(11, 209);
             this.groupLinearOptions.Name = "groupLinearOptions";
             this.groupLinearOptions.Size = new System.Drawing.Size(321, 141);
             this.groupLinearOptions.TabIndex = 12;
@@ -180,7 +180,7 @@
             // 
             // groupRandomOptions
             // 
-            this.groupRandomOptions.Location = new System.Drawing.Point(378, 36);
+            this.groupRandomOptions.Location = new System.Drawing.Point(360, 42);
             this.groupRandomOptions.Name = "groupRandomOptions";
             this.groupRandomOptions.Size = new System.Drawing.Size(321, 141);
             this.groupRandomOptions.TabIndex = 13;
@@ -200,7 +200,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(760, 391);
+            this.ClientSize = new System.Drawing.Size(699, 391);
             this.Controls.Add(this.groupRegExOptions);
             this.Controls.Add(this.groupRandomOptions);
             this.Controls.Add(this.groupLinearOptions);
