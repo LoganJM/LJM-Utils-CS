@@ -8,6 +8,9 @@ namespace LJM_Utils
 {
     public partial class RenamerForm : Form
     {
+        int PreviousStrategySelection = -1;
+        int ActiveStrategy;
+
         public RenamerForm()
         {
             InitializeComponent();
@@ -133,13 +136,60 @@ namespace LJM_Utils
             // TODO: display dialog (create new one) to prompt user for prefix and suffix. Show user what those mean as they type.
         }
 
+        public enum StrategySelection
+        {
+            Default = 0,
+            Linear = 1,
+            Random = 2,
+            RegEx = 3
+        }
+
         private void comboRenamingStrat_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // TODO: based on selection, change the tab of the options group.
+            if (PreviousStrategySelection == -1 && comboRenamingStrat.SelectedIndex == 0)
+            {
+                PreviousStrategySelection = 0;
+            }
+            else
+            {
+                // hide previous group
+                switch (PreviousStrategySelection)
+                {
+                    case (int)StrategySelection.Default:
+                        break;
+                    case (int)StrategySelection.Linear:
+                        groupLinearOptions.Visible = false;
+                        break;
+                    case (int)StrategySelection.Random:
+                        groupRandomOptions.Visible = false;
+                        break;
+                    case (int)StrategySelection.RegEx:
+                        groupRegExOptions.Visible = false;
+                        break;
+                    default:
+                        break;
+                }
 
-            // TODO: (Consider) Instead of using a tab page control group, show options relevant only
-            //       to the current selected renaming strategy. This means hiding and showing in this function
-            //       on the event of comboRenamingStrat changing.
+                // show selected group
+                switch (comboRenamingStrat.SelectedIndex)
+                {
+                    case (int)StrategySelection.Default:
+                        break;
+                    case (int)StrategySelection.Linear:
+                        groupLinearOptions.Visible = true;
+                        break;
+                    case (int)StrategySelection.Random:
+                        groupRandomOptions.Visible = true;
+                        break;
+                    case (int)StrategySelection.RegEx:
+                        groupRegExOptions.Visible = true;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            PreviousStrategySelection = comboRenamingStrat.SelectedIndex;
         }
     }
 }

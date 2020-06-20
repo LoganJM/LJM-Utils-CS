@@ -39,14 +39,12 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.btnUndo = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBaseControls = new System.Windows.Forms.GroupBox();
             this.openFileDialogRename = new System.Windows.Forms.OpenFileDialog();
-            this.tabControlExtraRenameOptions = new System.Windows.Forms.TabControl();
-            this.tabPageLinear = new System.Windows.Forms.TabPage();
-            this.tabPageRandom = new System.Windows.Forms.TabPage();
-            this.tabPageRegEx = new System.Windows.Forms.TabPage();
-            this.groupBox1.SuspendLayout();
-            this.tabControlExtraRenameOptions.SuspendLayout();
+            this.groupLinearOptions = new System.Windows.Forms.GroupBox();
+            this.groupRandomOptions = new System.Windows.Forms.GroupBox();
+            this.groupRegExOptions = new System.Windows.Forms.GroupBox();
+            this.groupBaseControls.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -116,7 +114,7 @@
             // 
             // btnRename
             // 
-            this.btnRename.Location = new System.Drawing.Point(255, 324);
+            this.btnRename.Location = new System.Drawing.Point(169, 356);
             this.btnRename.Name = "btnRename";
             this.btnRename.Size = new System.Drawing.Size(75, 23);
             this.btnRename.TabIndex = 7;
@@ -146,7 +144,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(255, 353);
+            this.btnExit.Location = new System.Drawing.Point(250, 356);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
             this.btnExit.TabIndex = 10;
@@ -154,78 +152,66 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // groupBox1
+            // groupBaseControls
             // 
-            this.groupBox1.Controls.Add(this.btnBrowseForInput);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.btnClear);
-            this.groupBox1.Controls.Add(this.btnUndo);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txtInputDirectory);
-            this.groupBox1.Controls.Add(this.txtExtInclusions);
-            this.groupBox1.Controls.Add(this.comboRenamingStrat);
-            this.groupBox1.Location = new System.Drawing.Point(10, 6);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(321, 197);
-            this.groupBox1.TabIndex = 11;
-            this.groupBox1.TabStop = false;
+            this.groupBaseControls.Controls.Add(this.btnBrowseForInput);
+            this.groupBaseControls.Controls.Add(this.label1);
+            this.groupBaseControls.Controls.Add(this.btnClear);
+            this.groupBaseControls.Controls.Add(this.btnUndo);
+            this.groupBaseControls.Controls.Add(this.label2);
+            this.groupBaseControls.Controls.Add(this.label3);
+            this.groupBaseControls.Controls.Add(this.txtInputDirectory);
+            this.groupBaseControls.Controls.Add(this.txtExtInclusions);
+            this.groupBaseControls.Controls.Add(this.comboRenamingStrat);
+            this.groupBaseControls.Location = new System.Drawing.Point(10, 6);
+            this.groupBaseControls.Name = "groupBaseControls";
+            this.groupBaseControls.Size = new System.Drawing.Size(321, 197);
+            this.groupBaseControls.TabIndex = 11;
+            this.groupBaseControls.TabStop = false;
             // 
-            // tabControlExtraRenameOptions
+            // groupLinearOptions
             // 
-            this.tabControlExtraRenameOptions.Controls.Add(this.tabPageLinear);
-            this.tabControlExtraRenameOptions.Controls.Add(this.tabPageRandom);
-            this.tabControlExtraRenameOptions.Controls.Add(this.tabPageRegEx);
-            this.tabControlExtraRenameOptions.Location = new System.Drawing.Point(11, 209);
-            this.tabControlExtraRenameOptions.Name = "tabControlExtraRenameOptions";
-            this.tabControlExtraRenameOptions.SelectedIndex = 0;
-            this.tabControlExtraRenameOptions.Size = new System.Drawing.Size(239, 171);
-            this.tabControlExtraRenameOptions.TabIndex = 12;
+            this.groupLinearOptions.Location = new System.Drawing.Point(10, 209);
+            this.groupLinearOptions.Name = "groupLinearOptions";
+            this.groupLinearOptions.Size = new System.Drawing.Size(321, 141);
+            this.groupLinearOptions.TabIndex = 12;
+            this.groupLinearOptions.TabStop = false;
+            this.groupLinearOptions.Text = "Linear Options";
             // 
-            // tabPageLinear
+            // groupRandomOptions
             // 
-            this.tabPageLinear.Location = new System.Drawing.Point(4, 22);
-            this.tabPageLinear.Name = "tabPageLinear";
-            this.tabPageLinear.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLinear.Size = new System.Drawing.Size(231, 145);
-            this.tabPageLinear.TabIndex = 0;
-            this.tabPageLinear.Text = "Linear";
-            this.tabPageLinear.UseVisualStyleBackColor = true;
+            this.groupRandomOptions.Location = new System.Drawing.Point(378, 36);
+            this.groupRandomOptions.Name = "groupRandomOptions";
+            this.groupRandomOptions.Size = new System.Drawing.Size(321, 141);
+            this.groupRandomOptions.TabIndex = 13;
+            this.groupRandomOptions.TabStop = false;
+            this.groupRandomOptions.Text = "Random Options";
             // 
-            // tabPageRandom
+            // groupRegExOptions
             // 
-            this.tabPageRandom.Location = new System.Drawing.Point(4, 22);
-            this.tabPageRandom.Name = "tabPageRandom";
-            this.tabPageRandom.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageRandom.Size = new System.Drawing.Size(312, 145);
-            this.tabPageRandom.TabIndex = 1;
-            this.tabPageRandom.Text = "Random";
-            this.tabPageRandom.UseVisualStyleBackColor = true;
-            // 
-            // tabPageRegEx
-            // 
-            this.tabPageRegEx.Location = new System.Drawing.Point(4, 22);
-            this.tabPageRegEx.Name = "tabPageRegEx";
-            this.tabPageRegEx.Size = new System.Drawing.Size(312, 145);
-            this.tabPageRegEx.TabIndex = 2;
-            this.tabPageRegEx.Text = "RegEx";
-            this.tabPageRegEx.UseVisualStyleBackColor = true;
+            this.groupRegExOptions.Location = new System.Drawing.Point(360, 194);
+            this.groupRegExOptions.Name = "groupRegExOptions";
+            this.groupRegExOptions.Size = new System.Drawing.Size(321, 141);
+            this.groupRegExOptions.TabIndex = 14;
+            this.groupRegExOptions.TabStop = false;
+            this.groupRegExOptions.Text = "RegEx Options";
             // 
             // RenamerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(342, 391);
-            this.Controls.Add(this.tabControlExtraRenameOptions);
+            this.ClientSize = new System.Drawing.Size(760, 391);
+            this.Controls.Add(this.groupRegExOptions);
+            this.Controls.Add(this.groupRandomOptions);
+            this.Controls.Add(this.groupLinearOptions);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBaseControls);
             this.Controls.Add(this.btnRename);
             this.Name = "RenamerForm";
             this.Text = "Renamer";
             this.Load += new System.EventHandler(this.RenamerForm_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.tabControlExtraRenameOptions.ResumeLayout(false);
+            this.groupBaseControls.ResumeLayout(false);
+            this.groupBaseControls.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -243,11 +229,10 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnUndo;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBaseControls;
         private System.Windows.Forms.OpenFileDialog openFileDialogRename;
-        private System.Windows.Forms.TabControl tabControlExtraRenameOptions;
-        private System.Windows.Forms.TabPage tabPageLinear;
-        private System.Windows.Forms.TabPage tabPageRandom;
-        private System.Windows.Forms.TabPage tabPageRegEx;
+        private System.Windows.Forms.GroupBox groupLinearOptions;
+        private System.Windows.Forms.GroupBox groupRandomOptions;
+        private System.Windows.Forms.GroupBox groupRegExOptions;
     }
 }
