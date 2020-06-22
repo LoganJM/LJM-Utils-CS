@@ -148,8 +148,17 @@ namespace LJM_Utils
 
             foreach (string filePath in GetFiles())
             {
-                newName = PrepareFileName(filePath);
-                newPath = Path.Combine(Path.GetDirectoryName(filePath), newName);
+                int loopCount = 0;
+                do
+                {
+                    if (loopCount > 20)
+                    {
+                        throw new Exception("Random number generation may be insufficient, naming loop has ran over 20 times.");
+                    }
+                    loopCount++;
+                    newName = PrepareFileName(filePath);
+                    newPath = Path.Combine(Path.GetDirectoryName(filePath), newName);
+                } while (File.Exists(newPath));
 
                 RenameFile(filePath, newPath);
             }
