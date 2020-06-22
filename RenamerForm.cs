@@ -79,7 +79,11 @@ namespace LJM_Utils
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-
+            txtInputDirectory.Text = "";
+            txtExtInclusions.Text = "";
+            txtPrefixOption.Text = "";
+            txtSuffixOption.Text = "";
+            numRandomCharsOption.Value = 8;
         }
 
         private void btnUndo_Click(object sender, EventArgs e)
