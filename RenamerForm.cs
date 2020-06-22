@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 using System.IO;
 using Microsoft.WindowsAPICodePack.Dialogs;
@@ -9,7 +9,7 @@ namespace LJM_Utils
 {
     public partial class RenamerForm : Form
     {
-        Point OptionGroupLocation = new Point(11, 209);
+        Point OptionGroupLocation = new Point(11, 202);
         int PreviousStrategySelection = -1;
 
         public RenamerForm()
@@ -19,9 +19,10 @@ namespace LJM_Utils
             // Resize form and move option groups to overlay one another.
             // Reasoning: keeping everything separated allows for easy design of the controls
             //            when they are intended to all be on top of one another during runtime.
-            RenamerForm.ActiveForm.Width = 360;
+            this.Width = 360;
             groupRandomOptions.Location = OptionGroupLocation;
             groupRegExOptions.Location = OptionGroupLocation;
+            groupLinearOptions.Location = OptionGroupLocation;   
         }
 
         private bool ValidateRenameProcess(ref bool NoErrorsFound)
