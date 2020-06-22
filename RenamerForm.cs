@@ -25,14 +25,38 @@ namespace LJM_Utils
             groupLinearOptions.Location = OptionGroupLocation;   
         }
 
-        private bool ValidateRenameProcess(ref bool NoErrorsFound)
+        private void ValidateRenameProcess(ref bool NoErrorsFound)
         {
             // validate given path
             if (!Directory.Exists(txtInputDirectory.Text))
             {
-                NoErrorsFound = true;
+                NoErrorsFound = false;
                 MessageBox.Show($"The given path \"{txtInputDirectory.Text}\" does not exist.",
                                 "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            // validate options for selected strategy
+            switch (comboRenamingStrat.SelectedIndex)
+            {
+                case (int)StrategySelection.Linear:
+                    if (txtLinearExample.Text.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
+                    {
+                        NoErrorsFound = false;
+                    }
+                    break;
+                case (int)StrategySelection.Random:
+                    if (numRandomCharsOption.Value < 1)
+                    {
+                        NoErrorsFound = false;
+                    }
+                    break;
+                case (int)StrategySelection.RegEx:
+                    // TODO: given pattern containins a capture group
+                    NoErrorsFound = false; // not implemented
+                    break;
+                default:
+                    NoErrorsFound = false;
+                    break;
             }
 
             // validate given extensions
@@ -44,12 +68,10 @@ namespace LJM_Utils
             // validate combo box selection
             if (comboRenamingStrat.SelectedItem.ToString() == Vocab.Renaming.ComboDefault)
             {
-                NoErrorsFound = true;
-                MessageBox.Show($"You must set a renaming strategy.",
+                NoErrorsFound = false;
+                MessageBox.Show($"You must select a renaming strategy.",
                                 "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            return false;
         }
 
         private void btnRename_Click(object sender, EventArgs e)
