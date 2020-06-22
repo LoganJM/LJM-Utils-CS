@@ -204,5 +204,19 @@ namespace LJM_Utils
 
             PreviousStrategySelection = comboRenamingStrat.SelectedIndex;
         }
+
+        private void txtPrefixOption_TextChanged(object sender, EventArgs e){UpdateLinearExample();}
+
+        private void txtSuffixOption_TextChanged(object sender, EventArgs e){UpdateLinearExample();}
+
+        private void UpdateLinearExample()
+        {
+            txtLinearExample.Text = LinearRenamer.ExampleFilename(txtPrefixOption.Text, txtSuffixOption.Text);
+        }
+
+        private void numRandomCharsOption_ValueChanged(object sender, EventArgs e)
+        {
+            txtRandomExample.Text = RandomRenamer.ExampleFilename((int)numRandomCharsOption.Value);
+        }
     }
 }
