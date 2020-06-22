@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
@@ -111,19 +111,35 @@ namespace LJM_Utils
                 num++;
             }
         }
+
+        public static string ExampleFilename(string examplePrefix, string exampleSuffix)
+        {
+            return $"{examplePrefix} 05 {exampleSuffix}".Trim() + ".mkv";
+        }
     }
 
     class RandomRenamer : Renamer
     {
-        public int RandMin { get; set; }
-        public int RandMax { get; set; }
+        public long RandMin { get; set; }
+        public long RandMax { get; set; }
 
         public RandomRenamer(string folderPath, string[] extInclusions, int chars = 15)
         {
             this.TargetDirectory = folderPath;
             this.ExtenstionInclusions = extInclusions;
-            this.RandMin = Convert.ToInt32("1".PadRight(chars, '0'));
-            this.RandMax = Convert.ToInt32("9".PadRight(chars, '9'));
+            this.RandMin = Convert.ToInt64("1".PadRight(chars, '0'));
+            this.RandMax = Convert.ToInt64("9".PadRight(chars, '9'));
+        }
+
+        public static long LongRandom(long min, long max)
+        {
+            // Source: https://stackoverflow.com/a/6651661
+            Random rand = new Random();
+            byte[] buf = new byte[8];
+            rand.NextBytes(buf);
+            long longRand = BitConverter.ToInt64(buf, 0);
+
+            return (Math.Abs(longRand % (max - min)) + min);
         }
 
         public override void Execute()
@@ -142,9 +158,19 @@ namespace LJM_Utils
         private string PrepareFileName(string filePath)
         {
             Random newRand = new Random();
-            int randomNumber = newRand.Next(this.RandMin, this.RandMax);
+            long randomNumber = LongRandom(this.RandMin, this.RandMax);
 
             return Convert.ToString(randomNumber) + Path.GetExtension(filePath);
+        }
+
+        public static string ExampleFilename(int chars)
+        {
+            long exampleRandMin = Convert.ToInt64("1".PadRight(chars, '0'));
+            long exampleRandMax = Convert.ToInt64("9".PadRight(chars, '9'));
+            Random newRand = new Random();
+            long randomNumber = LongRandom(exampleRandMin, exampleRandMax);
+
+            return $"{Convert.ToString(randomNumber)}.mkv";
         }
     }
 }
