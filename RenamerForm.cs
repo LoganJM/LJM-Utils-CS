@@ -1,15 +1,13 @@
-using System;
+﻿using System;
 using System.Windows.Forms;
 using System.IO;
 using Microsoft.WindowsAPICodePack.Dialogs;
-using System.Collections.Generic;
-using System.Drawing;
 
 namespace LJM_Utils
 {
     public partial class RenamerForm : Form
     {
-        Point OptionGroupLocation = new Point(11, 202);
+        System.Drawing.Point OptionGroupLocation = new System.Drawing.Point(11, 202);
         int PreviousStrategySelection = -1;
 
         public RenamerForm()
@@ -123,7 +121,10 @@ namespace LJM_Utils
 
         private void btnUndo_Click(object sender, EventArgs e)
         {
-
+            // TODO: write support for logging of renames and functionality to undo logged "runs"
+            //       Idea 1: logging folder in temp folder with all rename jobs as separate text
+            //               files, timestamped with time since epoch as "job number"
+            //       Idea 2: SQLite database thats lists everything
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -153,35 +154,27 @@ namespace LJM_Utils
         
         private void executeLinearRename()
         {
-            string prefix= "", suffix = "";
-
-            getLinearAffixes(ref prefix, ref suffix);
             LinearRenamer renamerInstance = new LinearRenamer(txtInputDirectory.Text, getExtInclusions(),
-                                                              prefix, suffix);
+                                                              txtPrefixOption.Text, txtSuffixOption.Text);
+            renamerInstance.Execute();
         }
         private void executeRandomRename()
         {
 
             RandomRenamer renamerInstance = new RandomRenamer(txtInputDirectory.Text, getExtInclusions());
+            renamerInstance.Execute();
         }
 
         private string[] getExtInclusions()
         {
             if (txtExtInclusions.Text.Trim() != "")
             {
-                List<string> extenstions = new List<string>();
-
-                return extenstions.ToArray();
+                return txtExtInclusions.Text.Split(' ');
             }
             else
             {
                 return null;
             }
-        }
-
-        private void getLinearAffixes(ref string givenPrefix, ref string givenSuffix)
-        {
-            // TODO: display dialog (create new one) to prompt user for prefix and suffix. Show user what those mean as they type.
         }
 
         public enum StrategySelection
