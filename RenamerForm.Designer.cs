@@ -79,9 +79,9 @@
             this.label2.Location = new System.Drawing.Point(8, 89);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(139, 17);
+            this.label2.Size = new System.Drawing.Size(307, 17);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Extension Inclusions:";
+            this.label2.Text = "Extension Inclusions:      (Separated by spaces)";
             // 
             // label3
             // 
@@ -106,7 +106,7 @@
             this.txtExtInclusions.Location = new System.Drawing.Point(32, 114);
             this.txtExtInclusions.Margin = new System.Windows.Forms.Padding(4);
             this.txtExtInclusions.Name = "txtExtInclusions";
-            this.txtExtInclusions.Size = new System.Drawing.Size(193, 22);
+            this.txtExtInclusions.Size = new System.Drawing.Size(212, 22);
             this.txtExtInclusions.TabIndex = 4;
             // 
             // comboRenamingStrat
@@ -120,7 +120,7 @@
             this.comboRenamingStrat.Location = new System.Drawing.Point(32, 185);
             this.comboRenamingStrat.Margin = new System.Windows.Forms.Padding(4);
             this.comboRenamingStrat.Name = "comboRenamingStrat";
-            this.comboRenamingStrat.Size = new System.Drawing.Size(193, 24);
+            this.comboRenamingStrat.Size = new System.Drawing.Size(212, 24);
             this.comboRenamingStrat.TabIndex = 5;
             this.comboRenamingStrat.SelectedIndexChanged += new System.EventHandler(this.comboRenamingStrat_SelectedIndexChanged);
             // 
@@ -218,7 +218,7 @@
             // 
             // txtLinearExample
             // 
-            this.txtLinearExample.Location = new System.Drawing.Point(104, 133);
+            this.txtLinearExample.Location = new System.Drawing.Point(100, 133);
             this.txtLinearExample.Name = "txtLinearExample";
             this.txtLinearExample.ReadOnly = true;
             this.txtLinearExample.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
@@ -229,7 +229,7 @@
             // 
             // txtSuffixOption
             // 
-            this.txtSuffixOption.Location = new System.Drawing.Point(104, 82);
+            this.txtSuffixOption.Location = new System.Drawing.Point(100, 82);
             this.txtSuffixOption.Name = "txtSuffixOption";
             this.txtSuffixOption.Size = new System.Drawing.Size(248, 22);
             this.txtSuffixOption.TabIndex = 4;
@@ -238,7 +238,7 @@
             // 
             // txtPrefixOption
             // 
-            this.txtPrefixOption.Location = new System.Drawing.Point(104, 33);
+            this.txtPrefixOption.Location = new System.Drawing.Point(100, 33);
             this.txtPrefixOption.Name = "txtPrefixOption";
             this.txtPrefixOption.Size = new System.Drawing.Size(248, 22);
             this.txtPrefixOption.TabIndex = 3;
@@ -305,7 +305,7 @@
             this.numRandomCharsOption.Size = new System.Drawing.Size(87, 22);
             this.numRandomCharsOption.TabIndex = 7;
             this.numRandomCharsOption.Value = new decimal(new int[] {
-            15,
+            10,
             0,
             0,
             0});
@@ -319,12 +319,13 @@
             this.txtRandomExample.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.txtRandomExample.Size = new System.Drawing.Size(303, 22);
             this.txtRandomExample.TabIndex = 6;
+            this.txtRandomExample.Text = "4385174069.mkv";
             this.txtRandomExample.WordWrap = false;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(18, 93);
+            this.label8.Location = new System.Drawing.Point(15, 93);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 17);
             this.label8.TabIndex = 1;
