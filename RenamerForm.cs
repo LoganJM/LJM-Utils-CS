@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Windows.Forms;
 using System.IO;
 using Microsoft.WindowsAPICodePack.Dialogs;
@@ -82,19 +82,28 @@ namespace LJM_Utils
 
             if (NoErrorsFound)
             {
-                switch (comboRenamingStrat.SelectedItem.ToString())
+                try
                 {
-                    case Vocab.Renaming.ComboLinear:
-                        executeLinearRename();
-                        break;
-                    case Vocab.Renaming.ComboRandom:
-                        executeRandomRename();
-                        break;
-                    case Vocab.Renaming.ComboRegEx:
-                        MessageBox.Show("", "Unimplemented Feature");
-                        break;
-                    default:
-                        break;
+                    switch (comboRenamingStrat.SelectedItem.ToString())
+                    {
+                        case Vocab.Renaming.ComboLinear:
+                            executeLinearRename();
+                            break;
+                        case Vocab.Renaming.ComboRandom:
+                            executeRandomRename();
+                            break;
+                        case Vocab.Renaming.ComboRegEx:
+                            MessageBox.Show("Error", "RegEx strategy is WIP and not available.",
+                                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                catch (Exception thrownException)
+                {
+                    MessageBox.Show("Error", $"An unhandled exception has occurred: {thrownException}",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -105,7 +114,7 @@ namespace LJM_Utils
             txtExtInclusions.Text = "";
             txtPrefixOption.Text = "";
             txtSuffixOption.Text = "";
-            numRandomCharsOption.Value = 8;
+            numRandomCharsOption.Value = 10;
         }
 
         private void btnUndo_Click(object sender, EventArgs e)
