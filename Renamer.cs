@@ -1,6 +1,6 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading;
 using System.IO;
 
 namespace LJM_Utils
@@ -40,9 +40,9 @@ namespace LJM_Utils
         {
             List<string> matchingFiles = new List<string>();
 
-            if (ExtenstionInclusions != null)
+            if (this.ExtenstionInclusions != null)
             {
-                foreach (string ext in ExtenstionInclusions)
+                foreach (string ext in this.ExtenstionInclusions)
                 {
                     foreach (string filePath in Directory.GetFiles(this.TargetDirectory, searchPattern: "*" + ext))
                     {
@@ -145,10 +145,11 @@ namespace LJM_Utils
         public override void Execute()
         {
             string newPath, newName;
+            int loopCount;
 
             foreach (string filePath in GetFiles())
             {
-                int loopCount = 0;
+                loopCount = 0;
                 do
                 {
                     if (loopCount > 20)
@@ -158,6 +159,7 @@ namespace LJM_Utils
                     loopCount++;
                     newName = PrepareFileName(filePath);
                     newPath = Path.Combine(Path.GetDirectoryName(filePath), newName);
+                    Thread.Sleep(50);
                 } while (File.Exists(newPath));
 
                 RenameFile(filePath, newPath);
