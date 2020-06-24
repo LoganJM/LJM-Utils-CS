@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 using System.IO;
 using Microsoft.WindowsAPICodePack.Dialogs;
@@ -88,12 +88,16 @@ namespace LJM_Utils
                     {
                         case Vocab.Renaming.ComboLinear:
                             executeLinearRename();
+                            MessageBox.Show("Success!", "Notice",
+                                            MessageBoxButtons.OK, MessageBoxIcon.Information);
                             break;
                         case Vocab.Renaming.ComboRandom:
                             executeRandomRename();
+                            MessageBox.Show("Success!", "Notice",
+                                            MessageBoxButtons.OK, MessageBoxIcon.Information);
                             break;
                         case Vocab.Renaming.ComboRegEx:
-                            MessageBox.Show("Error", "RegEx strategy is WIP and not available.",
+                            MessageBox.Show("RegEx strategy is WIP and not available.", "Error",
                                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         default:
@@ -102,7 +106,7 @@ namespace LJM_Utils
                 }
                 catch (Exception thrownException)
                 {
-                    MessageBox.Show("Error", $"An unhandled exception has occurred: {thrownException}",
+                    MessageBox.Show($"An unhandled exception has occurred: {thrownException.Message}", "Error",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
