@@ -85,19 +85,30 @@ namespace LJM_Utils
                     switch (comboRenamingStrat.SelectedItem.ToString())
                     {
                         case Vocab.Renaming.ComboLinear:
-                            executeLinearRename();
-                            MessageBox.Show("Success!", "Notice",
+                        {
+                            LinearRenamer linearRenamer = new LinearRenamer(txtInputDirectory.Text, getExtInclusions(),
+                                                              txtPrefixOption.Text, txtSuffixOption.Text);
+                            linearRenamer.Execute();
+
+                            MessageBox.Show($"Success! \n{linearRenamer.FileCount} files were renamed.", "Notice",
                                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                             break;
+                        }
                         case Vocab.Renaming.ComboRandom:
-                            executeRandomRename();
-                            MessageBox.Show("Success!", "Notice",
+                        {
+                            RandomRenamer randomRenamer = new RandomRenamer(txtInputDirectory.Text, getExtInclusions());
+                            randomRenamer.Execute();
+
+                            MessageBox.Show($"Success! \n{randomRenamer.FileCount} files were renamed.", "Notice",
                                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                             break;
+                        }
                         case Vocab.Renaming.ComboRegEx:
+                        {
                             MessageBox.Show("RegEx strategy is WIP and not available.", "Error",
                                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
+                        }
                         default:
                             break;
                     }
@@ -150,19 +161,6 @@ namespace LJM_Utils
             {
                 txtInputDirectory.Text = dialog.FileName;
             }
-        }
-        
-        private void executeLinearRename()
-        {
-            LinearRenamer renamerInstance = new LinearRenamer(txtInputDirectory.Text, getExtInclusions(),
-                                                              txtPrefixOption.Text, txtSuffixOption.Text);
-            renamerInstance.Execute();
-        }
-        private void executeRandomRename()
-        {
-
-            RandomRenamer renamerInstance = new RandomRenamer(txtInputDirectory.Text, getExtInclusions());
-            renamerInstance.Execute();
         }
 
         private string[] getExtInclusions()

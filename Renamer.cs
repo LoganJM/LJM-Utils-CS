@@ -7,8 +7,15 @@ namespace LJM_Utils
 {
     class Renamer
     {
+        /// <summary>
+        /// The directory assigned for this renamer execution
+        /// </summary>
         public string TargetDirectory { get; set; }
         public string[] ExtenstionInclusions { get; set; } = null;
+        /// <summary>
+        /// The amount of files that can be or have been renamed
+        /// </summary>
+        public int FileCount { get; set; } = 0;
 
         /// <summary>
         /// Renames the file by using File.Move() 
@@ -50,6 +57,7 @@ namespace LJM_Utils
                     }
                 }
 
+                this.FileCount = matchingFiles.ToArray().Length;
                 return matchingFiles.ToArray();
             }
             else
