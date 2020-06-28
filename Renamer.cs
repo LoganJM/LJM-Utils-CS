@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace LJM_Utils
 {
@@ -36,7 +37,7 @@ namespace LJM_Utils
         /// Returns a string array based off of Renamer instance's TargetDirectory and
         /// ExtenstionInclusions.
         /// </summary>
-        public string[] GetFiles()
+        public virtual string[] GetFiles()
         {
             List<string> matchingFiles = new List<string>();
 
@@ -182,6 +183,63 @@ namespace LJM_Utils
             long randomNumber = LongRandom(exampleRandMin, exampleRandMax);
 
             return $"{Convert.ToString(randomNumber)}.mkv";
+        }
+    }
+
+    class RegExRenamer : Renamer
+    {
+        public Regex RegExPattern { get; set; }
+        public string Prefix { get; set; } = "";
+        public string Suffix { get; set; } = "";
+
+        public RegExRenamer(Regex pattern, string prefix, string suffix)
+        {
+            this.RegExPattern = pattern;
+            this.Prefix = prefix;
+            this.Suffix = suffix;
+        }
+
+        public override string[] GetFiles()
+        {
+            List<string> matchingFiles = new List<string>();
+
+            if (this.ExtenstionInclusions != null)
+            {
+                foreach (string ext in this.ExtenstionInclusions)
+                {
+                    foreach (string filePath in Directory.GetFiles(this.TargetDirectory, searchPattern: "*" + ext))
+                    {
+                        if (this.RegExPattern.IsMatch(filePath))
+                        {
+                            matchingFiles.Add(filePath);
+                        }
+                    }
+                }
+
+                return matchingFiles.ToArray();
+            }
+            else
+            {
+                return Directory.GetFiles(this.TargetDirectory);
+            }
+        }
+
+        public override void Execute()
+        {
+            string newPath, newName, capturedGroupText;
+            foreach (string fp in GetFiles())
+            {
+                capturedGroupText = "TODO"; //TODO
+                newName = $"{this.Prefix} {capturedGroupText} {this.Suffix}".Trim() + Path.GetExtension(fp);
+                newPath = Path.Combine(this.TargetDirectory, newName);
+
+                // RenameFile(fp, newPath);
+            }
+        }
+
+        public static string ExampleFilename(string prefix, string suffix)
+        {
+            return LinearRenamer.ExampleFilename(prefix, suffix);
         }
     }
 }
